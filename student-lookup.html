@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Lookup</title>
+</head>
+<body>
+<label for="sid">Enter a SID:</label>
+<input type="text" id="sid">
+<hr>
+<div id="output">
+
+</div>
+
+
+<script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+<script>
+    $("#sid").on("blur", function() {
+        let sid = $("#sid").val();
+        $.post("student-lookup.php", {sid: sid}, function(result) {
+            $("#output").html(result);
+        });
+    });
+</script>
+</body>
+</html>
